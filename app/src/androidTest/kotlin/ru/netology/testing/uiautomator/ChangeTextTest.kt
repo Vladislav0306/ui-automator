@@ -125,15 +125,15 @@ class ChangeTextTest {
 
     @Test
     fun testNewActivity(){
+        val textToSet = "Apple"
         val packageName = MODEL_PACKAGE
         waitForPackage(packageName)
 
         device.findObject(By.res(packageName, "userInput")).text = textToSet
         device.findObject(By.res(packageName, "buttonActivity")).click()
         device.wait(Until.hasObject(By.pkg(packageName)), TIMEOUT)
-
-        val result = device.findObject(By.res(packageName, "text")) .text
-        assertEquals(textToSet, result)
+        val result = device.findObject(By.res(packageName, "text")).text
+        assertEquals(result, textToSet)
     }
 }
 
